@@ -1,6 +1,6 @@
-## ￼￼Start integrating Google Sign-In into your iOS app
+# ￼￼Start integrating Google Sign-In into your iOS app
 
-# Set up your CocoaPods dependencies
+## Set up your CocoaPods dependencies
 
 Google Sign-In uses CocoaPods to install and manage dependencies. Open a terminal window and navigate to the location of the Xcode project for your application. If you have not already created a Podfile for your application, create one now:
 
@@ -13,7 +13,7 @@ pod install
 
 This creates an .xcworkspace file for your application. Use this file for all future development on your application.
 
-# Get an OAuth client ID
+## Get an OAuth client ID
 
 If you haven't already created an OAuth client ID, create it first.
 After you create the OAuth client ID, take note of the client ID string, which you will need to configure Google Sign-in in your app. You can optionally download the configuration file, which contains your client ID and other configuration data, for future reference.
@@ -27,7 +27,7 @@ Google Sign-in requires a custom URL Scheme to be added to your project. To add 
 
 Now that you've downloaded the project dependencies and configured your Xcode project, you can add Google-Sign-In to your iOS app.
 
-# Enable sign-in
+## Enable sign-in
 
 To enable sign in, you must configure the GIDSignIn shared instance. You can do this in many places in your app. Often the easiest place to configure this instance is in your app delegate's application:didFinishLaunchingWithOptions:method.
 
@@ -77,7 +77,7 @@ func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
     }
 }
 
-# Add the sign-in button
+## Add the sign-in button
 
 Next, you will add the Google Sign-In button so that the user can initiate the sign-in process. Make the following changes to the view controller that manages your app's sign-in screen:
 
