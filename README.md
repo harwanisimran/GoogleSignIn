@@ -1,6 +1,6 @@
 ## ￼￼Start integrating Google Sign-In into your iOS app
 
-#Set up your CocoaPods dependencies
+# Set up your CocoaPods dependencies
 
 Google Sign-In uses CocoaPods to install and manage dependencies. Open a terminal window and navigate to the location of the Xcode project for your application. If you have not already created a Podfile for your application, create one now:
 
