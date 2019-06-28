@@ -37,7 +37,7 @@ To enable sign in, you must configure the GIDSignIn shared instance. You can d
 
        ...
 
-       class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+        class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
 2. In your app delegate's application:didFinishLaunchingWithOptions: method, configure the GIDSignInshared instance and set the sign-in delegate.
         
@@ -83,17 +83,17 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
 3. In the GIDSignInButton action, set the UI delegate of the GIDSignIn object and also use signIn method to sign in. You can use the signOut method of the GIDSignIn object to sign out your user on the current device
 
-    @objc func signinUserWithGoogle(_ sender: UIButton) {
+       @objc func signinUserWithGoogle(_ sender: UIButton) {
         
-        if btnGoogleSignIn.title(for: .normal) == "Sign Out" {
+         if btnGoogleSignIn.title(for: .normal) == "Sign Out" {
             GIDSignIn.sharedInstance()?.signOut()
             lblTitle.text = ""
             btnGoogleSignIn.setTitle("Sign In Using Google", for: .normal)
-        }
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance()?.signIn()
-    }
+         }
+         GIDSignIn.sharedInstance().delegate = self
+         GIDSignIn.sharedInstance().uiDelegate = self
+         GIDSignIn.sharedInstance()?.signIn()
+       }
 
 4. Next Implement the signIn:didSignInFor: method of GIDSignInDelegate protocol. For Example:
 
