@@ -37,19 +37,15 @@ To enable sign in, you must configure the GIDSignIn shared instance. You can d
 
        ...
 
-       class AppDelegate: UIResponder,                                                  UIApplicationDelegate, GIDSignInDelegate {
-
+       class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
 2. In your app delegate's application:didFinishLaunchingWithOptions: method, configure the GIDSignInshared instance and set the sign-in delegate.
         
-        func application(_ application: UIApplication,
-  didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    // Initialize sign-in
-    GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID"
-    GIDSignIn.sharedInstance().delegate = self
-
-    return true
-}
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        GIDSignIn.sharedInstance().clientID = "YOUR_CLIENT_ID"
+        GIDSignIn.sharedInstance().delegate = self
+        return true
+        }
 
 3. Implement the application:openURL:options: method of your app delegate. The method should call the handleURL method of the GIDSignIn instance, which will properly handle the URL that your application receives at the end of the authentication process.
 
