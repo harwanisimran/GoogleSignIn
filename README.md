@@ -49,29 +49,26 @@ To enable sign in, you must configure the GIDSignIn shared instance. You can d
 
 3. Implement the application:openURL:options: method of your app delegate. The method should call the handleURL method of the GIDSignIn instance, which will properly handle the URL that your application receives at the end of the authentication process.
 
-func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-    return GIDSignIn.sharedInstance().handle(url as URL?,
-                                             sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-                                             annotation: options[UIApplicationOpenURLOptionsKey.annotation])
-}
+       func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url as URL?,sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as?String,annotation: options[UIApplication.OpenURLOptionsKey.annotation])  
+       }
 
 4. In the app delegate, implement the GIDSignInDelegate protocol to handle the sign-in process by defining the following methods:
 
-func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-  withError error: Error!) {
-    if let error = error {
-      print("\(error.localizedDescription)")
-    } else {
-      // Perform any operations on signed in user here.
-      let userId = user.userID                  // For client-side use only!
-      let idToken = user.authentication.idToken // Safe to send to the server
-      let fullName = user.profile.name
-      let givenName = user.profile.givenName
-      let familyName = user.profile.familyName
-      let email = user.profile.email
-      // ...
-    }
-}
+       func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+          if let error = error {
+             print("\(error.localizedDescription)")
+          }
+          else {
+             let userId = user.userID
+             let idToken = user.authentication.idToken
+             let fullName = user.profile.name
+             let givenName = user.profile.givenName
+             let familyName = user.profile.familyName
+             let email = user.profile.email
+          }
+       }
 
 ## Add the sign-in button
 
@@ -100,15 +97,15 @@ class ViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
 
 4. Next Implement the signIn:didSignInFor: method of GIDSignInDelegate protocol. For Example:
 
-func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
+       func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+          if let error = error {
             print("We have error sign in user = \(error)")
-        }
-        else {
-            if let gmailUser = user {
+          }
+          else {
+             if let gmailUser = user {
                 lblTitle.text = "You are sign using id \(gmailUser.profile.email!)"
                 btnGoogleSignIn.setTitle("Sign Out", for: .normal)
-            }
-        }
-    }
+              }
+          }
+       }
 
